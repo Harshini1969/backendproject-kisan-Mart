@@ -6,7 +6,9 @@ const { adminAuth } = require("../Middleware/auth");
 router.get("/customers",adminAuth,async(req, res)=>{
   try {
     const customers = await UserModel.find({ role: "customer" });
-     res.send(customers);
+     res.json({
+        customers
+     });
   } 
   catch (err) {
     res.status(500).json({

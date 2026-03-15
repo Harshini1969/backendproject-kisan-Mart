@@ -8,7 +8,7 @@ async function adminAuth(req, res, next) {
     let result = await UserModel.findOne({ _id: decoded.id });
 
     console.log(decoded);
-    console.log(result);
+    // console.log(result);
 
     if (!result || decoded.role !== "admin") {
       res.status(401).json({
