@@ -7,7 +7,7 @@ async function adminAuth(req, res, next) {
     let decoded = jwt.verify(token, process.env.JWT_SECRET);
     let result = await UserModel.findOne({ _id: decoded.id });
 
-    console.log(decoded);
+    // console.log(decoded);
     // console.log(result);
 
     if (!result || decoded.role !== "admin") {

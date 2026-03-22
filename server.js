@@ -3,6 +3,7 @@ const cors = require("cors");
 const connection = require("./config/db");
 let customerRoutes = require("./routes/customerRoutes");
 let adminRoutes = require("./Routes/adminRoutes");
+let productRoutes = require("./Routes/productRoutes");
 
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/customer", customerRoutes);
 app.use("/admin", adminRoutes); 
+app.use("/product",productRoutes);
 
 app.get("/", (req, res) => {
   res.send("home");
