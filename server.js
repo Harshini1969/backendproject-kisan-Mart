@@ -4,6 +4,8 @@ const connection = require("./config/db");
 let customerRoutes = require("./routes/customerRoutes");
 let adminRoutes = require("./Routes/adminRoutes");
 let productRoutes = require("./Routes/productRoutes");
+let cartRoutes = require("./Routes/cartRoutes");
+
 
 require("dotenv").config();
 
@@ -17,6 +19,8 @@ app.use(express.json());
 app.use("/customer", customerRoutes);
 app.use("/admin", adminRoutes); 
 app.use("/product",productRoutes);
+app.use("/cart",cartRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("home");
