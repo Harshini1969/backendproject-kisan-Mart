@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connection = require("./config/db");
@@ -5,9 +6,7 @@ let customerRoutes = require("./routes/customerRoutes");
 let adminRoutes = require("./Routes/adminRoutes");
 let productRoutes = require("./Routes/productRoutes");
 let cartRoutes = require("./Routes/cartRoutes");
-
-
-require("dotenv").config();
+const paymentRoutes = require("./Routes/paymentRoutes");
 
 let app = express();
 
@@ -20,6 +19,7 @@ app.use("/customer", customerRoutes);
 app.use("/admin", adminRoutes); 
 app.use("/product",productRoutes);
 app.use("/cart",cartRoutes);
+app.use("/payment", paymentRoutes);
 
 
 app.get("/", (req, res) => {

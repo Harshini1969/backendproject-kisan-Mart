@@ -64,23 +64,23 @@ const deleteProduct = async (req, res) => {
  //UPDATE QUANTITY 
 
 const updateQuantity = async (req, res) => {
-  try {
-    const { count } = req.body;
+      try {
+        const { count } = req.body;
 
-    const updated = await CartModel.findByIdAndUpdate(
-      req.params.id,
-      { count },
-    //   { new: true }
-     { returnDocument: "after" }
-    ).populate("productId");
+        const updated = await CartModel.findByIdAndUpdate(
+          req.params.id,
+          { count },
+          // { new: true }
+          { returnDocument: 'after' }
+        ).populate("productId");
 
-    res.json({
-      message: "Quantity updated",
-      data: updated,
-    });
+        res.json({
+          message: "Quantity updated",
+          data: updated,
+        });
 
-  } catch (err) {
-    res.status(500).json({ message: "Server Error" });
+      } catch (err) {
+            res.status(500).json({ message: "Server Error" });
   }
 };
 
