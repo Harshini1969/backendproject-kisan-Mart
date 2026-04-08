@@ -60,7 +60,24 @@ const loginCustomer = async (req, res) => {
   }
 };
 
+const getCustomerProfile = async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.userId).select("-password");
+    console.log("USER ID:", req.userId);
+
+     console.log("USER DATA:", res.data);
+
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(500).json({
+      message: "Failed to fetch profile"
+    });
+  }
+};
+
+
 module.exports = {
   registerCustomer,
-  loginCustomer
+  loginCustomer,
+  getCustomerProfile
 };

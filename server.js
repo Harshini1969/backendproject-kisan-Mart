@@ -2,11 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connection = require("./config/db");
-let customerRoutes = require("./routes/customerRoutes");
+
+let customerRoutes = require("./Routes/customerRoutes");
 let adminRoutes = require("./Routes/adminRoutes");
 let productRoutes = require("./Routes/productRoutes");
 let cartRoutes = require("./Routes/cartRoutes");
-const paymentRoutes = require("./Routes/paymentRoutes");
+let paymentRoutes = require("./Routes/paymentRoutes");
+let orderRoutes = require("./Routes/orderRoutes");
 
 let app = express();
 
@@ -15,12 +17,13 @@ connection();
 // middlewares
 app.use(cors());
 app.use(express.json());
+
 app.use("/customer", customerRoutes);
 app.use("/admin", adminRoutes); 
-app.use("/product",productRoutes);
-app.use("/cart",cartRoutes);
+app.use("/product", productRoutes);
+app.use("/cart", cartRoutes);
 app.use("/payment", paymentRoutes);
-
+app.use("/order", orderRoutes);
 
 app.get("/", (req, res) => {
   res.send("home");
@@ -29,5 +32,5 @@ app.get("/", (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, "0.0.0.0", () => {
-  console.log("Server is running in port 5000");
+  console.log(`Server is running on port ${PORT}`);
 });
