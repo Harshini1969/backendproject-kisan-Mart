@@ -26,7 +26,7 @@ const editProduct = async (req, res) => {
     let updated = await ProductModel.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }   // ensures updated product is returned
+      { new: true }   
     );
 
     res.json({
