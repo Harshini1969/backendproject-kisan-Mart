@@ -42,7 +42,11 @@ let ordersSchema=new mongoose.Schema({
     isDelivered: {
         type: Boolean,
         default: false
-    }
+    },
+    productId: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "product",
+},
 
 
 })

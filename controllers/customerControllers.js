@@ -62,10 +62,9 @@ const loginCustomer = async (req, res) => {
 
 const getCustomerProfile = async (req, res) => {
   try {
-    const user = await UserModel.findById(req.userId).select("-password");
-    console.log("USER ID:", req.userId);
-
-     console.log("USER DATA:", res.data);
+    const user = await customerModel
+      .findById(req.userId)
+      .select("-password");
 
     res.status(200).json(user);
   } catch (err) {
@@ -74,7 +73,6 @@ const getCustomerProfile = async (req, res) => {
     });
   }
 };
-
 
 module.exports = {
   registerCustomer,
