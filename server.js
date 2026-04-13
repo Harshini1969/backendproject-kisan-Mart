@@ -24,6 +24,8 @@ app.use("/product", productRoutes);
 app.use("/cart", cartRoutes);
 app.use("/payment", paymentRoutes);
 app.use("/order", orderRoutes);
+app.use("/uploads",express.static("uploads"))
+
 
 app.get("/", (req, res) => {
   res.send("home");
