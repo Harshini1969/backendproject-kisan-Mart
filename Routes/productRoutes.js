@@ -7,7 +7,7 @@ let router = express.Router();
 
 router.get("/getAll", getAllProducts);
 // router.post("/add", adminAuth, addProduct);
-router.post("/add", adminAuth, upload.single("image"), addProduct);
+router.post("/add", adminAuth, upload.array("images",5), addProduct);
 router.put("/edit/:id", adminAuth, editProduct);
 router.delete("/delete/:id", adminAuth, deleteProduct);
 

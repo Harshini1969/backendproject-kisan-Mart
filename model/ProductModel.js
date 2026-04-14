@@ -6,7 +6,7 @@ let productSchema = mongoose.Schema({
   unit: String,
   quantity: Number,
   isOrganic: Boolean,
-  image: String
+  images: [String]
 });
 
 let ProductModel = mongoose.model("product", productSchema);

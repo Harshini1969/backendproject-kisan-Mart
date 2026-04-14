@@ -9,37 +9,32 @@ const getAllProducts = async (req, res) => {
   }
 };
 //ADD
-// const addProduct = async (req, res) => {
-//   try {
-//     let result = await ProductModel.create(req.body);
-//     res.status(201).json({
-//       message: "Product added",
-//       data: result
-//     });
-//   } catch (err) {
-//     res.status(500).json({ message: "Server Error" });
-//   }
-// };
-
 
 const addProduct = async (req, res) => {
   try {
-    const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+    console.log("BODY:", req.body);
+    console.log("FILES:", req.files);
+
+    const imagePaths = req.files?.map(file => `/uploads/${file.filename}`) || [];
 
     let result = await ProductModel.create({
       ...req.body,
-      image: imagePath
+      price: Number(req.body.price),
+      quantity: Number(req.body.quantity),
+      images: imagePaths
     });
 
     res.status(201).json({
       message: "Product added",
       data: result
     });
-  }
-   catch (err) {
-    res.status(500).json({ message: "Server Error" });
+
+  } catch (err) {
+    console.log(" ADD PRODUCT ERROR:", err);
+    res.status(500).json({ message: err.message });
   }
 };
+
 //EDIT
 const editProduct = async (req, res) => {
   try {
