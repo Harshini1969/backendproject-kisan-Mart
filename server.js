@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connection = require("./config/db");
+const path = require("path");
+const fs = require("fs");
 
 let customerRoutes = require("./Routes/customerRoutes");
 let adminRoutes = require("./Routes/adminRoutes");
@@ -17,6 +19,8 @@ connection();
 // middlewares
 app.use(cors());
 app.use(express.json());
+
+const uploadDir = path.join(__dirname, "uploads");
 
 app.use("/customer", customerRoutes);
 app.use("/admin", adminRoutes); 
